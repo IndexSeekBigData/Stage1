@@ -5,45 +5,41 @@ from pathlib import Path
 START_MARKER = "*** START OF THE PROJECT GUTENBERG EBOOK"
 END_MARKER = "*** END OF THE PROJECT GUTENBERG EBOOK"
 
-book_id = 1342
 
-url = f"https://www.gutenberg.org/cache/epub/{book_id}/pg{book_id}.txt"
+def download_book(book_id):
 
-response = requests.get(url)
+    url = f"https://www.gutenberg.org/cache/epub/{book_id}/pg{book_id}.txt"
 
-text = response.text
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+    except requests.RequestException as error:
+        print("Error al descargar el libro:", error)
+        return
 
-header, body_and_footer = text.split(START_MARKER, 1)
-body, footer = body_and_footer.split(END_MARKER, 1)
+    text = response.text
 
-print("HEADER:")
-print(header[:1000])
+    header, body_and_footer = text.split(START_MARKER, 1)
+    body, footer = body_and_footer.split(END_MARKER, 1)
 
-print("\nBODY:")
-print(body[:300])
+    now = datetime.now()
 
-print("\nFOOTER:")
-print(footer[:300])
+    date = now.strftime("%Y%m%d")
+    hour = now.strftime("%H")
 
-now = datetime.now()
+    folder = Path("datalake") / date / hour
+    folder.mkdir(parents=True, exist_ok=True)
 
-date = now.strftime("%Y%m%d")
-hour = now.strftime("%H")
+    header_path = folder / f"{book_id}.header.txt"
+    body_path = folder / f"{book_id}.body.txt"
 
-folder = Path("datalake") / date / hour
+    header_path.write_text(header, encoding="utf-8")
+    body_path.write_text(body, encoding="utf-8")
 
-folder.mkdir(parents=True, exist_ok=True)
+    print("Header guardado en:", header_path)
+    print("Body guardado en:", body_path)
 
-header_path = folder / f"{book_id}.header.txt"
-body_path = folder / f"{book_id}.body.txt"
 
-header_path.write_text(header, encoding="utf-8")
-body_path.write_text(body, encoding="utf-8")
 
-print("Header guardado en:", header_path)
-print("Body guardado en:", body_path)
-
-print("Carpeta creada:", folder)
-
-print("Fecha:", date)
-print("Hora:", hour)
+download_book(345)
+download_book(999999999)
