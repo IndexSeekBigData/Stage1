@@ -43,7 +43,7 @@ def index_book(book_id, body_path, index_path="datamarts/inverted_index.json"):
     save_index(inverted_index, index_path)
     print(f"[INDEXER] Libro {book_id} indexado con éxito ({len(terms)} términos únicos).")
 
-
+# Prueba
 if __name__ == "__main__":
     datalake_path = Path("datalake")
     body_files = list(datalake_path.rglob("*.body.txt"))
