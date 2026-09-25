@@ -57,7 +57,7 @@ def insert_book_metadata(book_id, header_path, body_path, db_path="datamarts/met
 
     print(f"[DATAMART METADATA] Procesado libro {book_id}: '{title}' por {author}")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     create_metadata_db()
 
