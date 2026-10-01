@@ -10,7 +10,7 @@ def tokenize(text):
     return set(words)
 
 
-def load_existing_index(index_path="datamarts/inverted_index.json"):
+def load_existing_index(index_path="../../datamarts/inverted_index.json"):
 
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
@@ -18,7 +18,7 @@ def load_existing_index(index_path="datamarts/inverted_index.json"):
     return {}
 
 
-def save_index(index_data, index_path="datamarts/inverted_index.json"):
+def save_index(index_data, index_path="../../datamarts/inverted_index.json"):
 
     os.makedirs(os.path.dirname(index_path), exist_ok=True)
     with open(index_path, "w", encoding="utf-8") as f:
@@ -33,7 +33,7 @@ def mark_as_indexed(book_id):
         with control_file.open("a", encoding="utf-8") as file:
             file.write(f"{book_id}\n")
 
-def index_book(book_id, body_path, index_path="datamarts/inverted_index.json"):
+def index_book(book_id, body_path, index_path="../../datamarts/inverted_index.json"):
 
     text = Path(body_path).read_text(encoding="utf-8", errors="ignore")
 
@@ -55,7 +55,7 @@ def index_book(book_id, body_path, index_path="datamarts/inverted_index.json"):
 
 # Prueba
 if __name__ == "__main__":
-    datalake_path = Path("datalake")
+    datalake_path = Path("../../datalake")
     body_files = list(datalake_path.rglob("*.body.txt"))
 
     if body_files:

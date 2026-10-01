@@ -22,7 +22,7 @@ def get_pending_books():
 
 
 def process_pending_book(book_id):
-    datalake_path = Path("datalake")
+    datalake_path = Path("../../datalake")
 
     body_files = list(
         datalake_path.rglob(f"{book_id}.body.txt")

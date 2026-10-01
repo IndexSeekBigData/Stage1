@@ -27,7 +27,7 @@ def download_book(book_id):
     date = now.strftime("%Y%m%d")
     hour = now.strftime("%H")
 
-    folder = Path("datalake") / date / hour
+    folder = Path("../../datalake") / date / hour
     folder.mkdir(parents=True, exist_ok=True)
 
     header_path = folder / f"{book_id}.header.txt"

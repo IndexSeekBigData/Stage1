@@ -4,7 +4,7 @@ import sqlite3
 from pathlib import Path
 
 
-def create_metadata_db(db_path="datamarts/metadata.db"):
+def create_metadata_db(db_path="../../datamarts/metadata.db"):
 
     os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
@@ -40,7 +40,7 @@ def parse_header_file(header_path):
     return title, author, language
 
 
-def insert_book_metadata(book_id, header_path, body_path, db_path="datamarts/metadata.db"):
+def insert_book_metadata(book_id, header_path, body_path, db_path="../../datamarts/metadata.db"):
 
     title, author, language = parse_header_file(header_path)
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     create_metadata_db()
 
-    datalake_path = Path("datalake")
+    datalake_path = Path("../../datalake")
     header_files = list(datalake_path.rglob("*.header.txt"))
 
     if header_files:
