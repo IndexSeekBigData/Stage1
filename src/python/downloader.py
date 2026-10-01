@@ -54,7 +54,8 @@ def mark_as_downloaded(book_id):
 
 
 
-download_book(345)
-download_book(1342)
-download_book(84)
-download_book(999999999)
+if __name__ == "__main__":
+    download_book(345)
+    download_book(1342)
+    download_book(84)
+    download_book(99999999)
