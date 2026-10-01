@@ -36,10 +36,25 @@ def download_book(book_id):
     header_path.write_text(header, encoding="utf-8")
     body_path.write_text(body, encoding="utf-8")
 
+    mark_as_downloaded(book_id)
+
     print("Header guardado en:", header_path)
     print("Body guardado en:", body_path)
 
 
 
+def mark_as_downloaded(book_id):
+    control_file = Path("../../control/downloaded_books.txt")
+
+    downloaded_books = control_file.read_text(encoding="utf-8").splitlines()
+
+    if str(book_id) not in downloaded_books:
+        with control_file.open("a", encoding="utf-8") as file:
+            file.write(f"{book_id}\n")
+
+
+
 download_book(345)
+download_book(1342)
+download_book(84)
 download_book(999999999)
