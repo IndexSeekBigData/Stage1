@@ -176,7 +176,8 @@ The current implementation includes:
 ## Authors
 
 - Alejandro Hernández De León
-- Team members - Big Data Project
+- Diego Ruiz Rodríguez
+- Julen Mendoza Borrero
 
 ## Stage 1
 
