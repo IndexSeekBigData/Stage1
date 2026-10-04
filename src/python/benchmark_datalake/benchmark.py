@@ -542,8 +542,7 @@ if __name__ == "__main__":
 
     benchmark_write(books)
 
-    # Crear las estructuras completas
-    # antes de medir las búsquedas
+
     clean_all()
     save_all_books(books)
 
