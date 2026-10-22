@@ -1,4 +1,6 @@
+
 import json
+import shutil
 from pathlib import Path
 
 
@@ -12,34 +14,43 @@ INDEX_PATH = (
 
 
 def build_index(books, tokenize):
-    inverted_index = {}
+    if INDEX_PATH.exists():
+        shutil.rmtree(INDEX_PATH)
+
+    update_index(books, tokenize)
+
+
+def update_index(books, tokenize):
+    INDEX_PATH.mkdir(parents=True, exist_ok=True)
+
+    new_postings = {}
 
     for book_id, body in books:
-        terms = tokenize(body)
+        for term in set(tokenize(body)):
+            new_postings.setdefault(term, set()).add(str(book_id))
 
-        for term in terms:
-            if term not in inverted_index:
-                inverted_index[term] = []
+    affected_terms = set(new_postings)
 
-            inverted_index[term].append(str(book_id))
-
-    INDEX_PATH.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    for term, book_ids in inverted_index.items():
+    for term, book_ids in new_postings.items():
         path = INDEX_PATH / f"{term}.json"
 
-        with path.open(
-                "w",
-                encoding="utf-8"
-        ) as file:
-            json.dump(
-                book_ids,
-                file,
-                ensure_ascii=False
-            )
+        if path.exists():
+            with path.open("r", encoding="utf-8") as file:
+                existing_ids = set(json.load(file))
+        else:
+            existing_ids = set()
+
+        updated_ids = existing_ids | book_ids
+
+        if updated_ids != existing_ids:
+            with path.open("w", encoding="utf-8") as file:
+                json.dump(
+                    sorted(updated_ids, key=int),
+                    file,
+                    ensure_ascii=False
+                )
+
+    return affected_terms
 
 
 def search_term(term):
@@ -48,8 +59,5 @@ def search_term(term):
     if not path.exists():
         return []
 
-    with path.open(
-            "r",
-            encoding="utf-8"
-    ) as file:
+    with path.open("r", encoding="utf-8") as file:
         return json.load(file)
