@@ -236,6 +236,8 @@ def benchmark_incremental(books):
                         f"para el término '{term}'"
                     )
 
+            clean_indexes()
+
             start = time.perf_counter()
 
             module.build_index(books, tokenize)
