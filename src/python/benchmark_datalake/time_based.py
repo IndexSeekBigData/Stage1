@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark"
+BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark" / "python"
 
 
 def save_book_time_based(book_id, header, body, date, hour):

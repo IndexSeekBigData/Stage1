@@ -11,7 +11,7 @@ from range_based import save_book_range_based
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 SAMPLE_DATA_PATH = PROJECT_ROOT / "sample_data"
-BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark"
+BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark" / "python"
 
 REPETITIONS = 5
 LOOKUP_REPETITIONS = 100
@@ -155,8 +155,8 @@ def lookup_book_based(book_id):
 
 def lookup_range_based(book_id):
     book_number = int(book_id)
-    range_start = (book_number // 1000) * 1000
-    range_end = range_start + 999
+    range_start = (book_number // 25) * 25
+    range_end = range_start + 24
 
     path = (
             BENCHMARK_PATH

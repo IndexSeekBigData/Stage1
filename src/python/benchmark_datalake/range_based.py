@@ -2,14 +2,14 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
-BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark"
+BENCHMARK_PATH = PROJECT_ROOT / "datalake_benchmark" / "python"
 
 
 def save_book_range_based(book_id, header, body):
     book_number = int(book_id)
 
-    range_start = (book_number // 1000) * 1000
-    range_end = range_start + 999
+    range_start = (int(book_id) // 25) * 25
+    range_end = range_start + 24
 
     folder = (
             BENCHMARK_PATH

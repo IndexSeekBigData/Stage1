@@ -36,3 +36,15 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Python ###
+__pycache__/
+*.pyc
+.venv/
+
+### Generated data ###
+/datalake/
+/datalake_benchmark/
+/index_benchmark/
+/sample_data/
+/datamarts/

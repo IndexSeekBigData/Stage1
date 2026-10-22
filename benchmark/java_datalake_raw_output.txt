@@ -1,0 +1,76 @@
+========================================
+       DATALAKE BENCHMARK - JAVA
+========================================
+Libros cargados: 100
+Repeticiones: 5
+Sample data: C:\Users\herna\IdeaProjects\InverSeek\sample_data
+Benchmark path: C:\Users\herna\IdeaProjects\InverSeek\datalake_benchmark\java
+
+========== WRITE / THROUGHPUT ==========
+time_based   | 0.187218 s | desviación: 0.011815 s
+               534.14 libros/s
+book_based   | 0.162617 s | desviación: 0.002917 s
+               614.94 libros/s
+range_based  | 0.161645 s | desviación: 0.005224 s
+               618.64 libros/s
+
+========== LOOKUP ==========
+time_based   | 1.600823 ms/búsqueda | desviación: 0.026220 ms/búsqueda
+book_based   | 0.013587 ms/búsqueda | desviación: 0.000320 ms/búsqueda
+range_based  | 0.013383 ms/búsqueda | desviación: 0.000284 ms/búsqueda
+
+========== INCREMENTAL INSERTION ==========
+Libros iniciales: 90
+Libros añadidos: 10
+IDs añadidos: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104]
+time_based   | 0.023380 s | desviación: 0.003631 s
+book_based   | 0.022571 s | desviación: 0.000893 s
+range_based  | 0.022661 s | desviación: 0.000982 s
+
+========== PENDING BOOK DISCOVERY ==========
+Libros descargados: 100
+Libros indexados: 90
+IDs pendientes esperados: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104]
+time_based   | 0.004080 s | desviación: 0.001036 s
+             IDs: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104]
+book_based   | 0.009875 s | desviación: 0.001271 s
+             IDs: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104]
+range_based  | 0.003815 s | desviación: 0.000438 s
+             IDs: [95, 96, 97, 98, 99, 100, 101, 102, 103, 104]
+
+========== STORAGE ==========
+time_based   | 57.24 MB | 200 archivos | 2 directorios
+book_based   | 57.24 MB | 200 archivos | 100 directorios
+range_based  | 57.24 MB | 200 archivos | 5 directorios
+
+========== RECOVERY AFTER INTERRUPTION ==========
+Libro interrumpido: 1
+time_based   | 0.000508 s | headers: 100 | bodies: 100 | pares: 100 | OK
+book_based   | 0.000451 s | headers: 100 | bodies: 100 | pares: 100 | OK
+range_based  | 0.000470 s | headers: 100 | bodies: 100 | pares: 100 | OK
+
+========== SCALABILITY ==========
+
+========== CORPUS: 10 BOOKS ==========
+time_based   | escritura: 0.053298 s | búsqueda: 0.304771 ms | 4.42 MB
+book_based   | escritura: 0.019815 s | búsqueda: 0.013475 ms | 4.42 MB
+range_based  | escritura: 0.043971 s | búsqueda: 0.013354 ms | 4.42 MB
+
+========== CORPUS: 25 BOOKS ==========
+time_based   | escritura: 0.082444 s | búsqueda: 0.526481 ms | 15.91 MB
+book_based   | escritura: 0.039110 s | búsqueda: 0.013444 ms | 15.91 MB
+range_based  | escritura: 0.046188 s | búsqueda: 0.013426 ms | 15.91 MB
+
+========== CORPUS: 50 BOOKS ==========
+time_based   | escritura: 0.098216 s | búsqueda: 0.905187 ms | 31.00 MB
+book_based   | escritura: 0.078318 s | búsqueda: 0.013169 ms | 31.00 MB
+range_based  | escritura: 0.080352 s | búsqueda: 0.013163 ms | 31.00 MB
+
+========== CORPUS: 100 BOOKS ==========
+time_based   | escritura: 0.331600 s | búsqueda: 1.583500 ms | 57.24 MB
+book_based   | escritura: 0.149934 s | búsqueda: 0.013108 ms | 57.24 MB
+range_based  | escritura: 0.157984 s | búsqueda: 0.013282 ms | 57.24 MB
+
+========================================
+          BENCHMARK COMPLETADO
+========================================
