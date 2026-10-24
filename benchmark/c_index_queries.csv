@@ -1,0 +1,4 @@
+structure,mean_ms_per_query,std_ms_per_query
+monolithic,103.343015,1.732466
+term_files,0.048613,0.001343
+hierarchical,0.048258,0.002374

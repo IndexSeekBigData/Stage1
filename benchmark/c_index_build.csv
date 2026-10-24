@@ -1,0 +1,4 @@
+structure,mean_s,std_s,books_per_second
+monolithic,3.170840,0.016386,31.54
+term_files,71.786624,0.661521,1.39
+hierarchical,75.301243,0.280857,1.33
