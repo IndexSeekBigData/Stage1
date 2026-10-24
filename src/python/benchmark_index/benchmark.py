@@ -13,7 +13,7 @@ import hierarchical
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 SAMPLE_DATA_PATH = PROJECT_ROOT / "sample_data"
-INDEX_BENCHMARK_PATH = PROJECT_ROOT / "index_benchmark"
+INDEX_BENCHMARK_PATH = PROJECT_ROOT / "index_benchmark" / "python"
 RESULTS_PATH = PROJECT_ROOT / "benchmark"
 
 REPETITIONS = 3

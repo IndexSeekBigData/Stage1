@@ -1,0 +1,4 @@
+structure,incremental_mean_s,incremental_std_s,rebuild_mean_s,rebuild_std_s,affected_terms
+monolithic,0.294142,0.022311,1.423144,0.051118,19062
+term_files,6.234494,0.193314,26.934077,0.382499,19062
+hierarchical,7.425493,1.203354,34.591408,1.707813,19062

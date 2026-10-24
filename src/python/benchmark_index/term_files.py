@@ -9,6 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 INDEX_PATH = (
         PROJECT_ROOT
         / "index_benchmark"
+        / "python"
         / "term_files"
 )
 

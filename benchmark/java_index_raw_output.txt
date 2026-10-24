@@ -1,0 +1,74 @@
+========================================
+    INVERTED INDEX BENCHMARK - JAVA
+========================================
+Libros cargados: 100
+Repeticiones: 3
+Sample data: C:\Users\herna\IdeaProjects\InverSeek\sample_data
+Benchmark path: C:\Users\herna\IdeaProjects\InverSeek\index_benchmark\java
+
+========== FULL INDEX BUILD ==========
+monolithic   | 1.416649 s | std: 0.165994 s | 70.59 libros/s
+term_files   | 25.773413 s | std: 2.185406 s | 3.88 libros/s
+hierarchical | 30.721023 s | std: 0.132996 s | 3.26 libros/s
+
+========== QUERY PERFORMANCE ==========
+Consultas: [the, and, love, man, woman, time, house, book, zzzznotfound]
+monolithic   | 96.005345 ms/consulta | std: 0.942813 ms
+term_files   | 0.063292 ms/consulta | std: 0.003565 ms
+hierarchical | 0.064876 ms/consulta | std: 0.001462 ms
+
+========== QUERY CORRECTNESS: FULL BUILD ==========
+the             | 100 documentos | OK
+and             | 100 documentos | OK
+love            | 76 documentos | OK
+man             | 86 documentos | OK
+woman           | 73 documentos | OK
+time            | 96 documentos | OK
+house           | 83 documentos | OK
+book            | 73 documentos | OK
+zzzznotfound    | 0 documentos | OK
+
+========== INCREMENTAL VS FULL REBUILD ==========
+Libros iniciales: 90
+Libros nuevos: 10
+IDs nuevos: [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+Términos afectados esperados: 19062
+
+monolithic
+Actualización incremental: 0.294142 s (std: 0.022311)
+Reconstrucción completa: 1.423144 s (std: 0.051118)
+Términos afectados: 19062
+
+term_files
+Actualización incremental: 6.234494 s (std: 0.193314)
+Reconstrucción completa: 26.934077 s (std: 0.382499)
+Términos afectados: 19062
+
+hierarchical
+Actualización incremental: 7.425493 s (std: 1.203354)
+Reconstrucción completa: 34.591408 s (std: 1.707813)
+Términos afectados: 19062
+
+Verificación incremental: OK en las tres estructuras
+
+Resultados guardados en: C:\Users\herna\IdeaProjects\InverSeek\benchmark\java_index_incremental.csv
+
+========== QUERY CORRECTNESS: AFTER REBUILD ==========
+the             | 100 documentos | OK
+and             | 100 documentos | OK
+love            | 76 documentos | OK
+man             | 86 documentos | OK
+woman           | 73 documentos | OK
+time            | 96 documentos | OK
+house           | 83 documentos | OK
+book            | 73 documentos | OK
+zzzznotfound    | 0 documentos | OK
+
+========== STORAGE ==========
+monolithic   | 4.33 MB | 1 archivos | 0 directorios
+term_files   | 3.14 MB | 106104 archivos | 0 directorios
+hierarchical | 3.14 MB | 106104 archivos | 26 directorios
+
+========================================
+          BENCHMARK COMPLETADO
+========================================
